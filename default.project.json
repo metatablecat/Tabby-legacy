@@ -1,0 +1,7 @@
+{
+	"globIgnorePaths": ["**/.spec.lua"],
+	"name": "Framework",
+	"tree": {
+		"$path": "src"
+	}
+}

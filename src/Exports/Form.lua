@@ -1,0 +1,60 @@
+--!strict
+-- TabbyForm
+local Types = require(script.Parent.Parent.Types)
+type Form<O..., C...> = Types.Form<O..., C...>
+
+local Common = require(script.Parent.Parent.Internal.Common)
+local PluginHandle = Common.Plugin
+
+type TabbyFormConstruct = {
+	GuiInfo: DockWidgetPluginGuiInfo?,
+	Render: (() -> Instance)?,
+}
+
+return function(formName: string)
+	return function<O..., C...>(params: TabbyFormConstruct): Form<O..., C...>
+		local guiInfo = params.GuiInfo or DockWidgetPluginGuiInfo.new()
+		local dockWidget = PluginHandle:CreateDockWidgetPluginGui(formName, guiInfo)
+
+		local renderFunc = params.Render
+
+		if renderFunc then
+			local handle = renderFunc()
+			handle.Parent = dockWidget
+		end
+		local Form: Form<O..., C...> = {
+			Name = formName,
+			DockWidget = dockWidget,
+			IsLoaded = false,
+
+			Open = function(self: Form<O..., C...>, ...: O...)
+				if not self.IsLoaded then
+					local findLoading = self.Loading
+					if findLoading then
+						findLoading(self)
+					end
+
+					self.IsLoaded = true
+				end
+
+				local findOpening = self.Opening
+				if findOpening then
+					findOpening(self, ...)
+				end
+
+				self.DockWidget.Enabled = true
+			end,
+
+			Close = function(self: Form<O..., C...>, ...: C...)
+				local findClosing = self.Closing
+				if findClosing then
+					findClosing(self, ...)
+				end
+
+				self.DockWidget.Enabled = false
+			end
+		}
+
+		return Form
+	end
+end

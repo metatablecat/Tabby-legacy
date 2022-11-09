@@ -1,0 +1,50 @@
+site_name: Tabby
+extra_css:
+  - stylesheets/extra.css
+theme:
+  name: material
+  palette:
+    scheme: slate
+
+  features:
+  - toc.integrate 
+
+  font:
+    text: Ubuntu
+    code: Roboto Mono
+
+repo_url: https://github.com/metatablecat/Tabby
+repo_name: metatablecat/Tabby
+
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true 
+
+plugins:
+  - search
+
+nav:
+  - Introduction: "index.md"
+  - Installation: "GettingStarted.md"
+  - Reference:
+    - Summary: "reference/index.md"
+    - Action: "reference/Action.md"
+    - Create: 
+      - Create Library: "reference/create/index.md"
+      - Component: "reference/create/Component.md"
+    - Event: "reference/Event.md"
+    - Form: "reference/Form.md"
+    - Input: "reference/Input.md"
+    - QtInterface:
+      - QtInterface: "reference/qt-interface/index.md"
+      - InterfaceBlob: "reference/qt-interface/InterfaceBlob.md"
+      - QtAction: "reference/qt-interface/QtAction.md"
+      - QtMenu: "reference/qt-interface/QtMenu.md"
+      - QtToolbar: "reference/qt-interface/QtToolbar.md"
+    - RuntimeScript: "reference/RuntimeScript.md"
