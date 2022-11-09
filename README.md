@@ -1,19 +1,9 @@
 # Tabby
 
-[![build](https://github.com/metatablecat/Tabby/actions/workflows/build.yml/badge.svg)](https://github.com/metatablecat/Tabby/actions/workflows/build.yml)
-
 The Cat plugin framework
 
 ## Installation
-* As a Rojo Project
-	* **RECOMMENDED** Use this project as a Git submodule in your Rojo project
-
-		```
-		git submodule add https://github.com/metatablecat/Tabby.git src/Framework
-		```
-	* Copy the `src` folder into your `src` folder or the `tabby.rbxm` binary with the name `Framework`
-* Within Roblox Studio:
-	* Insert the `tabby.rbxm` file into your plugin in Studio
+Download the latest [Release](https://github.com/metatablecat/Tabby/releases), and place it into your project as expected
 
 ## Basic Usage
 To create a simple Tabby project, your plugin will need at least the Tabby framework (named `Framework`) and a `Runtime` folder
@@ -63,6 +53,8 @@ end
 >   :initialise() --OK
 >   :initialise() --Error!
 > ```
+
+Read more at https://metatablecat.github.io/Tabby
 
 ## Features
 Tabby implements the following APIs:

@@ -4,15 +4,10 @@ Before going through the docs its good to learn how to set up your project so th
 To begin with setting up the project, you'll need to know how to develop the plugin based on where you are. These docs should translate regardless of environment, but the setup process is different between the two
 
 === "Rojo Projects"
-	Before everything else, set up a Rojo project intended for Plugin development.
+	Before everything else, set up a Rojo project intended for Plugin development
 
-	Then, there are two ways of obtaining the Tabby framework source.
+	Download the `tabby.rbxm` binary directly from [releases](https://github.com/metatablecat/Tabby/releases) and drag it into your `src` folder named `Framework`
 
-	1. Download the `tabby.rbxm` binary directly and drag it into your `src` folder named `Framework`
-	2. **RECOMMENDED** Use a git submodule to create a link to the repository hosted over on the GitHub repository
-		```bash
-		git submodule add https://github.com/metatablecat/Tabby.git src/Framework
-		```
 	Finally, add a folder named `Runtime` to your `src` folder, and you have successfully set up Tabby
 
 	To build a plugin under Rojo, use the following command:
@@ -22,7 +17,7 @@ To begin with setting up the project, you'll need to know how to develop the plu
 	```
 
 === "Roblox Studio"
-	Create a Plugin with a new folder, and drag the `tabby.rbxm` model into it, then add a second folder named `Runtime`
+	Create a Plugin with a new folder, and drag the `tabby.rbxm` model from [Releases](https://github.com/metatablecat/Tabby/releases) into it, then add a second folder named `Runtime`
 	!!! tip "Enable PluginDebuggingService"
 		Plugin Development is a lot easier under Roblox Studio with this enabled. You can do this by navigating to Studio Settings and searching for `Enable Plugin Debugging Service`. Studio will need to restart before enabling this.
 
