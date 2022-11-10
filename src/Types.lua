@@ -29,11 +29,15 @@ export type Component<RenderParams, Inst> = {
 }
 
 --@exports/Event.lua
-export type Event<A...> = {
-	Connect: (Event<A...>, func: (A...) -> ()) -> () -> (),
+export type Signal<A...> = {
+	Connect: (Signal<A...>, func: (A...) -> ()) -> () -> (),
 	ConnectedFunctions: {(A...) -> ()},
-	Wait: (Event<A...>) -> A...,
-	WaitingThreads: {thread},
+	Wait: (Signal<A...>) -> A...,
+	WaitingThreads: {thread}
+}
+
+export type Event<A...> = {
+	Signal: Signal<A...>,
 	Fire: (Event<A...>, A...) -> ()
 }
 
@@ -101,7 +105,7 @@ export type QtMenu = QtInterface<"PluginMenu", PluginMenu> & {
 	GetFullTree: (QtMenu) -> {QtAction|QtMenu}, -- returns everything as a list of objects. This is useful if you want to iterate over actions/menus to change stuff around
 
 	-- Icon API
-	SetActionIcon: (QtMenu, iconID: string) -> never, --UNIMPLEMENTED, DO NOT USE
+	SetActionIcon: (QtMenu, iconID: string) -> (), --UNIMPLEMENTED, DO NOT USE
 	SetIcon: (QtMenu, iconID: string) -> ()
 }
 
