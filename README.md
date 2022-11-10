@@ -5,6 +5,8 @@ The Cat plugin framework
 ## Installation
 Download the latest [Release](https://github.com/metatablecat/Tabby/releases), and place it into your project as expected
 
+If you want to use an unstable build of Tabby, build the contents provided under `src` using Rojo
+
 ## Basic Usage
 To create a simple Tabby project, your plugin will need at least the Tabby framework (named `Framework`) and a `Runtime` folder
 
