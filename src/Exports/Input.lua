@@ -3,15 +3,16 @@ local Types = require(script.Parent.Parent.Types)
 type TabbyInputObject = Types.TabbyInputObject
 
 local RuntimeEngine = require(script.Parent.Parent.Internal.Runtime)
+local Event = require(script.Parent.Event)
 local Common = require(script.Parent.Parent.Internal.Common)
 local Input = {}
 
 local Plugin = Common.Plugin
 local MouseObject = Plugin:GetMouse()
 
-local InputBeganEvent = Instance.new("BindableEvent")
-local InputChangedEvent = Instance.new("BindableEvent")
-local InputEndedEvent = Instance.new("BindableEvent")
+local InputBeganEvent: Types.Event<TabbyInputObject> = Event()
+local InputChangedEvent: Types.Event<TabbyInputObject> = Event()
+local InputEndedEvent: Types.Event<TabbyInputObject> = Event()
 
 local Mouse = {
 	Active = Plugin:IsActivatedWithExclusiveMouse(),
@@ -28,9 +29,9 @@ local function InputObject()
 end
 
 Input.Mouse = Mouse
-Input.InputBegan = InputBeganEvent.Event :: Types.TypedRBXScriptSignal<TabbyInputObject>
-Input.InputChanged = InputChangedEvent.Event :: Types.TypedRBXScriptSignal<TabbyInputObject>
-Input.InputEnded = InputEndedEvent.Event :: Types.TypedRBXScriptSignal<TabbyInputObject>
+Input.InputBegan = InputBeganEvent.Signal
+Input.InputChanged = InputChangedEvent.Signal
+Input.InputEnded = InputEndedEvent.Signal
 
 function Input:Activate()
 	Plugin:Activate(true)
