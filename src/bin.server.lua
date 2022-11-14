@@ -38,7 +38,6 @@ local function LoadRuntime(rtSourceFolder)
 		if mod:IsA("ModuleScript") then
 			local module = requireNoYield(mod)
 			if module then
-				module.Source = "Runtime" --deprecated prop, do not use
 				table.insert(ScriptMap, module)
 			end
 		end

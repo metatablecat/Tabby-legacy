@@ -64,7 +64,6 @@ function RuntimeAPI.newScript(scriptName: string): RuntimeScript
 	local rtScript = {}
 	rtScript.Name = scriptName
 	rtScript.Priority = 1
-	rtScript.Source = "Unknown"
 	rtScript.CHECK_HEADER = RuntimeAPI.CHECK_HEADER
 
 	return rtScript

@@ -137,7 +137,6 @@ export type QtToolbar = QtInterface<"PluginToolbar", PluginToolbar> & {
 export type RuntimeScript = {
 	Name: string,
 	Priority: number,
-	Source: string,
 
 	-- more lifecycle hooks?
 	Init: (RuntimeScript) -> ()?,
