@@ -38,7 +38,11 @@ export type Signal<A...> = {
 
 export type Event<A...> = {
 	Signal: Signal<A...>,
-	Fire: (Event<A...>, A...) -> ()
+	Fire: (Event<A...>, A...) -> (),
+
+	--DEPRECATED, Remove by v0.3 release
+	Connect: (Event<A...>, func: (A...) -> ()) -> () -> (),
+	Wait: (Event<A...>) -> A...,
 }
 
 --@exports/Form.lua

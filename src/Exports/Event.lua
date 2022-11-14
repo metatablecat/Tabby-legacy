@@ -33,6 +33,11 @@ return function<A...>(): Event<A...>
 	local Event = {}
 	Event.Signal = Signal() :: Signal<A...>
 
+	function Event.Connect(self: Event<A...>, func: (A...) -> ()): () -> ()
+		warn("Event:Connect is deprecated and will be removed in the near future. Use Event.Signal:Connect instead")
+		return self.Signal:Connect(func)
+	end
+
 	function Event.Fire(self: Event<A...>, ...: A...)
 		local sig = self.Signal
 		-- first, handoff callbacks
@@ -45,6 +50,11 @@ return function<A...>(): Event<A...>
 		for _, thread in sig.WaitingThreads do
 			coroutine.resume(thread, ...)
 		end
+	end
+
+	function Event.Wait(self: Event<A...>): A...
+		warn("Event:Wait is deprecated and will be removed in the near future. Use Event.Signal:Wait instead")
+		return self.Signal:Wait()
 	end
 
 	return Event
