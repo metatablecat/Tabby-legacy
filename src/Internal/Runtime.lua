@@ -8,7 +8,7 @@ local function foreachScript(key, ...)
 	for _, v in SCRIPT_MAP do
 		local funcBinding = v[key]
 		if funcBinding then
-			task.spawn(funcBinding, ...)
+			task.spawn(funcBinding, v, ...)
 		end
 	end
 end

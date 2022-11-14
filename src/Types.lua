@@ -140,10 +140,10 @@ export type RuntimeScript = {
 	Source: string,
 
 	-- more lifecycle hooks?
-	Init: () -> ()?,
-	Activated: () -> ()?,
-	Deactivated: () -> ()?,
-	Unloading: () -> ()?
+	Init: (RuntimeScript) -> ()?,
+	Activated: (RuntimeScript) -> ()?,
+	Deactivated: (RuntimeScript) -> ()?,
+	Unloading: (RuntimeScript) -> ()?
 }
 
 return nil
