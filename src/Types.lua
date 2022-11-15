@@ -14,7 +14,7 @@ export type Action<I..., O...> = {
 	Name: string,
 	ShowWarnings: boolean,
 	await: (Action<I..., O...>, I...) -> (boolean, O...),
-	handleAsync: (Action<I..., O...>, func: (boolean, O...) -> (), I...) -> ()
+	handleAsync: (Action<I..., O...>, func: (boolean, O...) -> (), I...) -> (optMsg: string?) -> boolean
 }
 
 --@exports/Create.lua
