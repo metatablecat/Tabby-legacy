@@ -74,6 +74,8 @@ Of course, feel free to use whatever you want with Tabby, the sky's the limit.
 ## Contributing
 Feel free to leave issues or pull requests with features you think should be added, I'll consider everything
 
+Development of later builds can be found on related brances under this repository, when contributing to these released, please push to that branch, otherwise the pull request will be rejected
+
 ## Licenses:
 Licensed under Apache 2.0
 
