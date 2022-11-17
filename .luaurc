@@ -1,0 +1,9 @@
+{
+	"lint": {
+		"*": true, 
+		"LocalUnused": false,
+		"ImportUnused": false,
+		"ImplicitReturn": false,
+		"FunctionUnused": false
+	}
+}
