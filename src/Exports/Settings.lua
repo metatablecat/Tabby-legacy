@@ -36,7 +36,7 @@ function Settings:GetSettingChangedSignal(name)
 	return e.Signal
 end
 
-function Settings:UpdateSetting(name, update: (any) -> any)
+function Settings:UpdateSetting(name, update: <T>(T) -> T)
 	local oldVal = Settings:GetSetting(name)
 	local newVal = select(1, update(oldVal)) or DO_NOT_UPDATE_THIS_PROP
 	if newVal ~= DO_NOT_UPDATE_THIS_PROP then
