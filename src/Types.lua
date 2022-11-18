@@ -138,13 +138,18 @@ export type QtToolbar = QtInterface<"PluginToolbar", PluginToolbar> & {
 }
 
 --@Internal/RuntimeScript
+type DataModelSessionType = "Edit"|"PlayServer"|"PlayClient"|"Standalone"
+
 export type RuntimeScript = {
 	Name: string,
 	Priority: number,
+	DataModelSessionType: DataModelSessionType,
+	DataModelSessionFilter: {"*"|DataModelSessionType},
 
 	-- more lifecycle hooks?
 	Init: (RuntimeScript) -> ()?,
 	Activated: (RuntimeScript) -> ()?,
+	DataModelClosing: (RuntimeScript, DataModelSessionType) -> ()?,
 	Deactivated: (RuntimeScript) -> ()?,
 	Unloading: (RuntimeScript) -> ()?
 }

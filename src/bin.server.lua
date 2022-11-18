@@ -1,8 +1,21 @@
 -- TODO: Implement more stuff (I shipped this on a prototype build which didnt have everything ready)
 -- Initialise fast flags (for now, have no reason to consume it, just need to init it here)
+local RunService = game:GetService("RunService")
+
 require(script.Parent.Internal.Flags)
 
+local function GetDataModelSessionType()
+	return if RunService:IsEdit() then
+		"Edit"
+	else if RunService:IsClient() then
+		"PlayClient"
+	else
+		"PlayServer"
+end
+
 local Runtime = require(script.Parent.Internal.Runtime)
+local DataModelSessionType = GetDataModelSessionType()
+Runtime.DataModelSessionType = DataModelSessionType
 
 local RtSource = script.Parent.Parent:FindFirstChild("Runtime")
 local ScriptMap = {}
@@ -50,4 +63,8 @@ Runtime:InvokeLifecycleAsync("Init")
 
 plugin.Unloading:Connect(function()
 	Runtime:InvokeLifecycleAsync("Unloading")
+end)
+
+game:BindToClose(function()
+	Runtime:InvokeLifecycleAsync("DataModelClosing", DataModelSessionType)
 end)
