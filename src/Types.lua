@@ -14,7 +14,7 @@ export type Action<I..., O...> = {
 	Name: string,
 	ShowWarnings: boolean,
 	await: (Action<I..., O...>, I...) -> (boolean, O...),
-	handleAsync: (Action<I..., O...>, func: (boolean, O...) -> (), I...) -> ()
+	handleAsync: (Action<I..., O...>, func: (boolean, O...) -> (), I...) -> (optMsg: string?) -> boolean
 }
 
 --@exports/Create.lua
@@ -38,7 +38,11 @@ export type Signal<A...> = {
 
 export type Event<A...> = {
 	Signal: Signal<A...>,
-	Fire: (Event<A...>, A...) -> ()
+	Fire: (Event<A...>, A...) -> (),
+
+	--DEPRECATED, Remove by v0.3 release
+	Connect: (Event<A...>, func: (A...) -> ()) -> () -> (),
+	Wait: (Event<A...>) -> A...,
 }
 
 --@exports/Form.lua
@@ -134,16 +138,20 @@ export type QtToolbar = QtInterface<"PluginToolbar", PluginToolbar> & {
 }
 
 --@Internal/RuntimeScript
+type DataModelSessionType = "Edit"|"PlayServer"|"PlayClient"|"Standalone"
+
 export type RuntimeScript = {
 	Name: string,
 	Priority: number,
-	Source: string,
+	DataModelSessionType: DataModelSessionType,
+	DataModelSessionFilter: {"*"|DataModelSessionType},
 
 	-- more lifecycle hooks?
-	Init: () -> ()?,
-	Activated: () -> ()?,
-	Deactivated: () -> ()?,
-	Unloading: () -> ()?
+	Init: (RuntimeScript) -> ()?,
+	Activated: (RuntimeScript) -> ()?,
+	DataModelClosing: (RuntimeScript, DataModelSessionType) -> ()?,
+	Deactivated: (RuntimeScript) -> ()?,
+	Unloading: (RuntimeScript) -> ()?
 }
 
 return nil

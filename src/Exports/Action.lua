@@ -9,6 +9,17 @@ local function asyncHandler<I..., O...>(Action: Action<I..., O...>, Handler: (bo
 	end)
 
 	coroutine.resume(co, ...)
+	return function(optMsg: string?)
+		if coroutine.status(co) ~= "dead" then
+			task.cancel(co)
+
+			local Handler = Handler :: (boolean, any) -> ()
+			Handler(false, optMsg or "awaitAsync call was cancelled")
+			return true
+		end
+
+		return false
+	end
 end
 
 return function<I..., O...>(actionName: string, callback: (I...) -> O...): Action<I..., O...>
@@ -30,7 +41,7 @@ return function<I..., O...>(actionName: string, callback: (I...) -> O...): Actio
 		end,
 
 		handleAsync = function(self, cb, ...)
-			asyncHandler(self, cb, ...) --consumes await
+			return asyncHandler(self, cb, ...) --consumes await
 		end,
 	}
 
