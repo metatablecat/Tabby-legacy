@@ -23,7 +23,7 @@ function Common.InterfaceInit(self, hookCallback)
 
 	local obj = hookCallback()
 	self.Mount = obj
-	SINGLETON_STORE:AddClassObject(self.Type, self.ID, obj)
+	SINGLETON_STORE:AddClassObject(self.Type, self.ID, self)
 	obj.Name = Common.FormatQtName(self.Type, self.ID)
 	return obj
 end
