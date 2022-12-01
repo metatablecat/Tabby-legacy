@@ -149,7 +149,6 @@ export type RuntimeScript = {
 	-- more lifecycle hooks?
 	Init: (RuntimeScript) -> ()?,
 	Activated: (RuntimeScript) -> ()?,
-	DataModelClosing: (RuntimeScript, DataModelSessionType) -> ()?,
 	Deactivated: (RuntimeScript) -> ()?,
 	Unloading: (RuntimeScript) -> ()?
 }

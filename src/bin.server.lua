@@ -64,7 +64,3 @@ Runtime:InvokeLifecycleAsync("Init")
 plugin.Unloading:Connect(function()
 	Runtime:InvokeLifecycleAsync("Unloading")
 end)
-
-game:BindToClose(function()
-	Runtime:InvokeLifecycleAsync("DataModelClosing", DataModelSessionType)
-end)
