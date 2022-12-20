@@ -20,7 +20,6 @@ Tabby.Settings = require(script.Exports.Settings)
 
 -- Types
 export type Action<A..., R...> = Types.Action<A..., R...>
-export type Component<RenderParams, Inst> = Types.Component<RenderParams, Inst>
 export type Event<A...> = Types.Event<A...>
 export type Form<O..., C...> = Types.Form<O..., C...>
 export type QtAction = Types.QtAction

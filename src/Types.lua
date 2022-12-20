@@ -17,17 +17,6 @@ export type Action<I..., O...> = {
 	handleAsync: (Action<I..., O...>, func: (boolean, O...) -> (), I...) -> (optMsg: string?) -> boolean
 }
 
---@exports/Create.lua
-export type Component<RenderParams, Inst> = {
-	ClassName: string,
-	_templateInst: Inst?,
-	story: ((params: RenderParams) -> Inst)?,
-	render: ((params: RenderParams) -> Inst)?,
-
-	GetTemplate: (Component<RenderParams, Inst>, () -> Inst) -> Inst,
-	GetCallback: (Component<RenderParams, Inst>) -> (useStoryMode: boolean?) -> (params: RenderParams) -> Inst
-}
-
 --@exports/Event.lua
 export type Signal<A...> = {
 	Connect: (Signal<A...>, func: (A...) -> ()) -> () -> (),
