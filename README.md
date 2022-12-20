@@ -61,7 +61,6 @@ Read more at https://metatablecat.github.io/Tabby
 ## Features
 Tabby implements the following APIs:
 * `Action` - a tiny implementation of asynchronous actions with support `await (Action:await)` and handling functions asyncrhonously through `handleAsync (Action:handleAsync)`
-* `Create` - a componentised version of Roblox's Create library
 * `Event` - a simple Lua event object
 * `Form` - a Form object that wraps `DockWidget` with basic features inspired from Windows Forms
 * `Input` - an ergonomic wrapper to the legacy plugin mouse input events
