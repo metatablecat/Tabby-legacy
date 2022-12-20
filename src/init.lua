@@ -10,13 +10,13 @@ local Exports = script.Exports
 
 -- Exports (please keep these ordered)
 Tabby.Action = require(Exports.Action)
-Tabby.Create = require(Exports.Create)
 Tabby.Event = require(Exports.Event)
 Tabby.Form = require(Exports.Form)
 Tabby.Input = require(Exports.Input)
 Tabby.Plugin = Plugin
 Tabby.QtInterface = require(script.QtInterface)
 Tabby.RuntimeScript = require(script.Internal.Runtime).newScript
+Tabby.Settings = require(script.Exports.Settings)
 
 -- Types
 export type Action<A..., R...> = Types.Action<A..., R...>
