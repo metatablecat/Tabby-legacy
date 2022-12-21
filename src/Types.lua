@@ -51,6 +51,24 @@ export type Form<O..., C...> = {
 	[string]: any
 }
 
+export type DockWidgetPluginGuiBindings = {
+	Archivable: boolean?,
+	AutoLocalize: boolean?,
+	Enabled: boolean?,
+	HostWidgetWasRestored: boolean?,
+	Name: string?,
+	ResetOnSpawn: boolean?,
+	RootLocalizationTable: LocalizationTable?,
+	SelectionBehaviorDown: Enum.SelectionBehavior?,
+	SelectionBehaviorLeft: Enum.SelectionBehavior?,
+	SelectionBehaviorRight: Enum.SelectionBehavior?,
+	SelectionBehaviorUp: Enum.SelectionBehavior?,
+	SelectionGroup: boolean?,
+	Title: string?,
+	ZIndexBehavior: Enum.ZIndexBehavior?,
+	[string]: any
+}
+
 --@exports/Input.lua
 export type TabbyInputObject = {
 	KeyCode: Enum.KeyCode,

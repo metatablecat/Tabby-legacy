@@ -9,19 +9,27 @@ local PluginHandle = Common.Plugin
 type TabbyFormConstruct = {
 	GuiInfo: DockWidgetPluginGuiInfo?,
 	Render: (() -> Instance)?,
+	Props: Types.DockWidgetPluginGuiBindings?
 }
 
 return function(formName: string)
 	return function<O..., C...>(params: TabbyFormConstruct): Form<O..., C...>
 		local guiInfo = params.GuiInfo or DockWidgetPluginGuiInfo.new()
 		local dockWidget = PluginHandle:CreateDockWidgetPluginGui(formName, guiInfo)
-
 		local renderFunc = params.Render
+		local props = params.Props
+
+		if props then
+			for propName, propVal in props do
+				dockWidget[propName] = propVal
+			end
+		end
 
 		if renderFunc then
 			local handle = renderFunc()
 			handle.Parent = dockWidget
 		end
+
 		local Form: Form<O..., C...> = {
 			Name = formName,
 			DockWidget = dockWidget,
