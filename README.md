@@ -1,3 +1,5 @@
+(Not working on this anymore, feel free to maintain it yourself)
+
 # Tabby
 
 The Cat plugin framework
